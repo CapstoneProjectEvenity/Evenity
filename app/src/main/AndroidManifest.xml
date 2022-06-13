@@ -12,6 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Evenity">
         <activity
+            android:name=".SuccessAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListWeddingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailTeamActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventOrganizerListActivity"
             android:exported="false" />
         <activity
@@ -34,7 +46,7 @@
         </activity>
         <activity
             android:name=".WelcomeActivity1"
-            android:exported="false"></activity>
+            android:exported="false" />
     </application>
 
 </manifest>

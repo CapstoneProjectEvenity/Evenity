@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 
 class TeamAdapter(private val teamList:ArrayList<Team>) : RecyclerView.Adapter<TeamAdapter.TeamViewHolder>() {
 
+    var onItemClick : ((Team) -> Unit)? = null
+
     class TeamViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageTeam : ImageView = itemView.findViewById(R.id.imageTeam)
         val nameTeam : TextView = itemView.findViewById(R.id.textViewNameTeam)
@@ -29,7 +31,13 @@ class TeamAdapter(private val teamList:ArrayList<Team>) : RecyclerView.Adapter<T
         holder.categoryTeam.text = team.category
         holder.priceTeam.text = team.price
         holder.ratingTeam.text = team.rating
+
+        holder.itemView.setOnClickListener {
+            onItemClick?.invoke(team)
+        }
     }
+
+
 
     override fun getItemCount(): Int {
         return teamList.size

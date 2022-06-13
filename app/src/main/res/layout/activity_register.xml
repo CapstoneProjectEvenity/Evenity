@@ -183,31 +183,5 @@ sit amet. Lorem ipsum dolor sit "
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Or"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
-
-        <Button
-            android:id="@+id/buttonSignIn"
-            android:layout_width="325dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="25dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/custom_buton"
-            android:text="Sign In"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

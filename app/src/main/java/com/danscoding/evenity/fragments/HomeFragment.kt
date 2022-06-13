@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.danscoding.evenity.*
@@ -17,9 +18,7 @@ class HomeFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var teamList : ArrayList<Team>
     private lateinit var teamAdapter: TeamAdapter
-    private lateinit var categoriesList : ArrayList<Categories>
-    private lateinit var categoriesAdapter: CategoriesAdapter
-    private lateinit var binding: FragmentHomeBinding
+    lateinit var btnWedding : CardView
 
     lateinit var textViewViewAllAvailableTeam : TextView
 
@@ -27,7 +26,6 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         initRecyclerView(view)
-        initCategoriesRecycler(view)
         return view
     }
 
@@ -35,32 +33,17 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         textViewViewAllAvailableTeam = view.findViewById(R.id.textViewViewAllAvailableTeam)
+        btnWedding = view.findViewById(R.id.cvWedding)
 
+        //intent for category
+        btnWedding.setOnClickListener{
+            val intent = Intent(requireActivity(), ListWeddingActivity::class.java)
+            startActivity(intent)
+        }
         textViewViewAllAvailableTeam.setOnClickListener {
             val intent = Intent(requireActivity(), EventOrganizerListActivity::class.java)
             startActivity(intent)
         }
-    }
-
-    private fun initCategoriesRecycler(view: View) {
-        recyclerView = view.findViewById(R.id.rvCategories)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL , false)
-
-        categoriesList = ArrayList()
-
-        categoriesList.add(Categories(R.drawable.bride, "Weeding"))
-        categoriesList.add(Categories(R.drawable.music, "Music"))
-        categoriesList.add(Categories(R.drawable.video, "Video"))
-        categoriesList.add(Categories(R.drawable.camera, "Photo"))
-
-        categoriesAdapter = CategoriesAdapter((categoriesList))
-        categoriesAdapter = CategoriesAdapter((categoriesList))
-        categoriesAdapter = CategoriesAdapter((categoriesList))
-        categoriesAdapter = CategoriesAdapter((categoriesList))
-
-
-        recyclerView.adapter = categoriesAdapter
     }
 
     private fun initRecyclerView(view: View) {
@@ -80,6 +63,12 @@ class HomeFragment : Fragment() {
 
         teamAdapter = TeamAdapter(teamList)
         recyclerView.adapter = teamAdapter
+
+        teamAdapter.onItemClick = {
+            val intent = Intent(requireActivity(), DetailTeamActivity::class.java)
+            intent.putExtra("team", it)
+            startActivity(intent)
+        }
 
     }
 
